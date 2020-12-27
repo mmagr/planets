@@ -68,3 +68,15 @@ associated with the operations involved themselves, we also incur on some extra
 representation-related errors that originate on the set of values one can effectively represent
 with `float64`. This, combined with the granularity of evaluation mentioned earlier, make for some
 quite hard to achieve scenarios, specially for the perfect weather condition.
+
+## Pushing to cf
+
+With a valid cloudfoundry environment in place, one can deploy this using:
+```cf push -b go_buildpack -m 64M --random-route```
+
+One such environment is available at:
+```planets-egregious-sable-dj.cap.explore.suse.dev```
+
+To access (requires `curl`):
+
+```curl -sSL planets-egregious-sable-dj.cap.explore.suse.dev/clima?dia=123```
