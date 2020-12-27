@@ -72,11 +72,19 @@ quite hard to achieve scenarios, specially for the perfect weather condition.
 ## Pushing to cf
 
 With a valid cloudfoundry environment in place, one can deploy this using:
-```cf push -b go_buildpack -m 64M --random-route```
+
+```
+cf push -b go_buildpack -m 64M --random-route
+```
 
 One such environment is available at:
-```planets-egregious-sable-dj.cap.explore.suse.dev```
+
+```
+planets-egregious-sable-dj.cap.explore.suse.dev
+```
 
 To access (requires `curl`):
 
-```curl -sSL planets-egregious-sable-dj.cap.explore.suse.dev/clima?dia=123```
+```
+curl -sSL planets-egregious-sable-dj.cap.explore.suse.dev/clima?dia=123
+```
