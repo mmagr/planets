@@ -1,0 +1,9 @@
+---
+applications:
+- name: planets
+  instances: 1
+  memory: 64M
+  buildpacks:
+  - go_buildpack
+  env:
+    GO_INSTALL_PACKAGE_SPEC: github.com/mmagr/planets/cmd/weather
