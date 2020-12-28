@@ -72,8 +72,9 @@ func ctxToString(ctx model.BatchContext) string {
 			for _, p := range v {
 				tally.Observe(p.Tally.Day, p.Tally.Metric)
 			}
-			fmt.Fprintf(&buffer, "Maximum rain happened on %d (perimeter %.2f)\n", tally.Day, tally.Metric)
+			fmt.Fprintf(&buffer, "Maximum rain happened on day %d (perimeter %.2f)\n", tally.Day, tally.Metric)
 		}
+		fmt.Fprintf(&buffer, "---\n")
 	}
 	return buffer.String()
 }

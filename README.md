@@ -11,7 +11,8 @@ require `go` (>= `1.15`) and `make` installed on your machine.
 
 To build:
 ```
-make build
+make build-api
+make build-cmd
 ```
 
 Once that is done, you should find the binary created in `$PWD/bin/service`.
@@ -38,6 +39,30 @@ In the sample above, one expects the forecast for the 123th day to be returned:
   "clima": "nublado"
 }
 ```
+
+## CMD usage
+
+Once the build command for the CMD util has been built:
+
+```
+make build-cmd
+```
+
+the binary file should be available under `build/bin/planets`.
+
+That can be used to generate the summary forecast for the supplied amount of years:
+
+```
+build/bin/planets forecast 100
+sequia - 401 periods
+---
+nublado - 10400 periods
+---
+lluvia - 8000 periods
+Maximum rain happened on day 72 (perimeter 6263.20)
+---
+```
+
 
 ## Notes
 

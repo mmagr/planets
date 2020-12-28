@@ -1,5 +1,6 @@
 
 BINARY_FILE=service
+CMD_FILE=planets
 BINARY_FILE_DIR=build/bin
 DOCKER_IMAGE_TAG=mmagr/planets
 
@@ -7,8 +8,8 @@ DOCKER_IMAGE_TAG=mmagr/planets
 build-api: tests
 	go build -o $(BINARY_FILE_DIR)/$(BINARY_FILE) cmd/weather/api.go
 
-build-cli: tests
-	go build -o $(BINARY_FILE_DIR)/$(BINARY_FILE) cmd/weather/cli.go
+build-cmd: tests
+	go build -o $(BINARY_FILE_DIR)/$(CMD_FILE) cmd/single/main.go
 
 .PHONY: build-docker-jenkins
 build-docker-jenkins:
