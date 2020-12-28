@@ -1,19 +1,19 @@
 package api
 
 import (
-	"github.com/mmagr/planets/internal/service"
 	"github.com/labstack/echo/v4"
+	"github.com/mmagr/planets/internal/service"
 	"net/http"
 	"strconv"
 )
 
-type Weather struct{
+type Weather struct {
 	weatherService service.Weather
 }
 
 type output struct {
-	Dia int `json:"dia"`
-	Clima string`json:"clima"`
+	Dia   int    `json:"dia"`
+	Clima string `json:"clima"`
 }
 
 func NewWeather(weather service.Weather) *Weather {
@@ -27,31 +27,31 @@ func (controller Weather) Register(server *echo.Echo) {
 func (controller Weather) Render(c echo.Context) error {
 	dayParam, exists := c.Request().URL.Query()["dia"]
 	if !exists {
-		return c.JSON(http.StatusBadRequest, map[string]string {
-			"mensaje": "parámetro requerido",
+		return c.JSON(http.StatusBadRequest, map[string]string{
+			"mensaje":   "parámetro requerido",
 			"parametro": "dia",
 		})
 	}
 
 	// use last supplied value as input
-	day, err := strconv.Atoi(dayParam[len(dayParam) - 1])
+	day, err := strconv.Atoi(dayParam[len(dayParam)-1])
 	if err != nil {
-		return c.JSON(http.StatusBadRequest, map[string]string {
-			"mensaje": "parámetro invalido: tiene que ser un entero positivo",
+		return c.JSON(http.StatusBadRequest, map[string]string{
+			"mensaje":   "parámetro invalido: tiene que ser un entero positivo",
 			"parametro": "dia",
 		})
 	}
 
 	if day < 0 {
-		return c.JSON(http.StatusBadRequest, map[string]string {
-			"mensaje": "parámetro invalido: tiene que ser un entero positivo",
+		return c.JSON(http.StatusBadRequest, map[string]string{
+			"mensaje":   "parámetro invalido: tiene que ser un entero positivo",
 			"parametro": "dia",
 		})
 	}
 
 	condition, _ := controller.weatherService.ConditionsOn(day)
 	result := output{
-		Dia: day,
+		Dia:   day,
 		Clima: condition,
 	}
 

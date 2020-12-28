@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/mmagr/planets/internal/model/conditions"
 	"github.com/mmagr/planets/internal/model"
+	"github.com/mmagr/planets/internal/model/conditions"
 )
 
 type Weather interface {
@@ -32,14 +32,14 @@ func (c climatempo) ConditionsOn(day int) (string, float64) {
 	if triangle.Valid() == false {
 		// we have either a draught, or perfect weather
 		line := c.lf.FromPoints(p1, p2)
-		if line.Includes(model.Point{0,0}){
+		if line.Includes(model.Point{0, 0}) {
 			return conditions.Draught, 0.0
 		}
 
 		return conditions.Perfect, 0.0
 	}
 
-	if triangle.Includes(model.Point{0,0}) {
+	if triangle.Includes(model.Point{0, 0}) {
 		return conditions.Rain, triangle.Perimeter()
 	}
 

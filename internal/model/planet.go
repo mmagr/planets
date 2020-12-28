@@ -18,7 +18,7 @@ type Planet struct {
 func (p Planet) Position(day int) Point {
 	// we're actually subject to some interesting errors here - round is used so we can at least
 	// observe the draught periods more easily
-	y, x := math.Sincos(p.Angle(day)*(math.Pi/180.0))
+	y, x := math.Sincos(p.Angle(day) * (math.Pi / 180.0))
 	return Point{
 		X: math.Round(p.Orbit * x),
 		Y: math.Round(p.Orbit * y),
@@ -26,5 +26,5 @@ func (p Planet) Position(day int) Point {
 }
 
 func (p Planet) Angle(day int) float64 {
-	return p.Alpha + (float64(day)*p.Omega)
+	return p.Alpha + (float64(day) * p.Omega)
 }

@@ -1,26 +1,29 @@
 package service
 
 import (
-	"github.com/mmagr/planets/internal/model/conditions"
 	"github.com/mmagr/planets/internal/model"
-	"testing"
+	"github.com/mmagr/planets/internal/model/conditions"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	"testing"
 )
 
-type MockLine struct {mock.Mock}
+type MockLine struct{ mock.Mock }
+
 func (ml *MockLine) Includes(p model.Point) bool {
 	args := ml.Called(p)
 	return args.Bool(0)
 }
 
-type MockLineFactory struct {mock.Mock}
+type MockLineFactory struct{ mock.Mock }
+
 func (mlf *MockLineFactory) FromPoints(p1, p2 model.Point) Line {
 	args := mlf.Called(p1, p2)
 	return args.Get(0).(Line)
 }
 
-type MockTriangle struct {mock.Mock}
+type MockTriangle struct{ mock.Mock }
+
 func (mt *MockTriangle) Perimeter() float64 {
 	args := mt.Called()
 	return args.Get(0).(float64)
@@ -36,7 +39,8 @@ func (mt *MockTriangle) Valid() bool {
 	return args.Bool(0)
 }
 
-type MockPolygonFactory struct {mock.Mock}
+type MockPolygonFactory struct{ mock.Mock }
+
 func (mpf *MockPolygonFactory) FromPoints(points ...model.Point) Polygon {
 	args := mpf.Called(points)
 	return args.Get(0).(Polygon)

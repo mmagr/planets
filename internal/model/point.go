@@ -10,5 +10,5 @@ type Point struct {
 }
 
 func (p Point) Distance(o Point) float64 {
-	return math.Sqrt(math.Pow(p.X - o.X, 2) + math.Pow(p.Y - o.Y, 2))
+	return math.Sqrt(math.Pow(p.X-o.X, 2) + math.Pow(p.Y-o.Y, 2))
 }

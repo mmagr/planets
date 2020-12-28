@@ -2,7 +2,7 @@ package model
 
 type Triangle struct {
 	points []Point
-	sides []Line
+	sides  []Line
 }
 
 func (t *Triangle) Valid() bool {
@@ -59,7 +59,7 @@ func (t Triangle) Includes(p Point) bool {
 func (t Triangle) Perimeter() float64 {
 	result := 0.0
 	for i, _ := range t.points {
-		result += t.points[i].Distance(t.points[(i+1) % len(t.points)])
+		result += t.points[i].Distance(t.points[(i+1)%len(t.points)])
 	}
 	return result
 }
@@ -84,6 +84,6 @@ func TriangleFromPoints(p1 Point, p2 Point, p3 Point) *Triangle {
 
 	return &Triangle{
 		points: []Point{p1, p2, p3},
-		sides: []Line{*s1, *s2, *s3},
+		sides:  []Line{*s1, *s2, *s3},
 	}
 }

@@ -19,7 +19,7 @@ type PolygonFactory interface {
 	FromPoints(points ...model.Point) Polygon
 }
 
-type TriangleFactory struct {}
+type TriangleFactory struct{}
 
 func (tf TriangleFactory) FromPoints(points ...model.Point) Polygon {
 	if len(points) != 3 {
@@ -37,7 +37,7 @@ type LineFactory interface {
 	FromPoints(p1, p2 model.Point) Line
 }
 
-type ILineFactory struct {}
+type ILineFactory struct{}
 
 func (lf ILineFactory) FromPoints(p1, p2 model.Point) Line {
 	return model.LineFromPoints(p1, p2)

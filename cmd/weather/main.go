@@ -10,8 +10,8 @@ import (
 	"syscall"
 
 	"github.com/mmagr/planets/internal/api"
-	"github.com/mmagr/planets/internal/service"
 	"github.com/mmagr/planets/internal/config"
+	"github.com/mmagr/planets/internal/service"
 	"github.com/mmagr/planets/internal/util"
 )
 
